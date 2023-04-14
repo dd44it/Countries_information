@@ -1,10 +1,14 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Layout from "./components/Layout"
 
 function App() {
-
   return (
-    <div className="app">
-      
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
