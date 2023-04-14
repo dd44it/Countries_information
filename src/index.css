@@ -1,0 +1,23 @@
+:root {
+  --white: hsl(0, 0%, 100%);
+  /* Light Mode */
+  --light-gray: hsl(0, 0%, 98%);
+  --dark-gray: hsl(0, 0%, 52%);
+  --dark-blue-light-mode: hsl(200, 15%, 8%);
+  /* Dark Mode */
+  --dark-blue-dark-mode: hsl(209, 23%, 22%);
+  --massive-dark-blue-dark-mode: hsl(207, 26%, 17%);
+
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Nunito Sans", sans-serif;
+}
