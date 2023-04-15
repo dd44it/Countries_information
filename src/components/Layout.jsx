@@ -7,7 +7,16 @@ export default function Layout() {
     <div className="site-wrapper">
       <Header />
       <main className="main">
-        <Outlet />
+        <div className="container">
+          <section className="search">
+            <div className="search-wrapper">
+              <span className="icon-search"></span>
+              <input type="text" className="search-input" placeholder="Search for a country..." />
+            </div>
+          </section>
+
+          <Outlet />
+        </div>
       </main>
     </div>
   )
