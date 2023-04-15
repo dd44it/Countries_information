@@ -1,42 +1,31 @@
-import React, { useEffect } from "react"
+import React, { useState } from "react"
 import { Outlet } from "react-router-dom"
+import Cards from "./Cards"
 import Header from "./Header"
-import data  from "../data.json"
+import data from "../data.json"
 
 export default function Layout() {
-  console.log(data)
+  const [country, setCountry] = useState("")
+  const [countriesList, setCountiesList] = useState(data)
+  const [searchedCountries, setSearchedCountries] = useState([])
 
-  // useEffect(() => {
+  function handleText(e) {
+    const { value } = e.target
+    setCountry(value)
+  }
 
-  // }, [])
-
-  const cardElem = data.map( (item, index) => {
-    return (
-        <div className="card-country" key={index}>
-          <div className="card-img"> 
-            <img src={item.flag} alt="" />
-          </div>
-          <div className="card-body">
-            <h3 className="card-title"> {item.name} </h3>
-            <div className="card-info">
-              <div className="card-info-row">
-                <div className="card-label">Population</div>
-                <div className="card-population"> {item.population} </div>
-              </div>
-              <div className="card-info-row">
-                <div className="card-label">Region</div>
-                <div className="card-region">{item.region}</div>
-              </div>
-              <div className="card-info-row">
-                <div className="card-label">Capital</div>
-                <div className="card-capital">{item.capital}</div>
-              </div>
-            </div>
-          </div>
-        </div>
+  function searchCountry(e) {
+    const CHAR_CODE_ENTER = 13
+    const { value } = e.target
+    if (e.charCode === CHAR_CODE_ENTER) {
+      const findCountry = countriesList.filter((country) =>
+        country.name.toLowerCase().includes(value.toLowerCase())
       )
-  })
-
+      if (findCountry.length) {
+        setSearchedCountries(findCountry)
+      }
+    }
+  }
 
   return (
     <div className="site-wrapper">
@@ -46,7 +35,15 @@ export default function Layout() {
           <section className="filter">
             <div className="search-wrapper">
               <span className="icon-search"></span>
-              <input type="text" className="search-input" placeholder="Search for a country..." />
+              <input
+                type="text"
+                className="search-input"
+                placeholder="Search for a country..."
+                name="country"
+                value={country}
+                onChange={handleText}
+                onKeyPress={searchCountry}
+              />
             </div>
             <div className="select-wrapper">
               <select id="" className="choose-select">
@@ -59,9 +56,7 @@ export default function Layout() {
               </select>
             </div>
           </section>
-          <section className="countries">
-            {cardElem}
-          </section>
+          <Cards listCountries={searchedCountries.length ? searchedCountries : countriesList} />
           <Outlet />
         </div>
       </main>
