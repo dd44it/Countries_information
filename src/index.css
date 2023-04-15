@@ -118,6 +118,7 @@ body {
 
 .card-body {
   padding: 30px 25px;
+  background-color: var(--white);
 }
 
 .card-country {
