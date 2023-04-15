@@ -97,4 +97,55 @@ body {
   border: none;
   box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.05);
   padding: 0 25px 0 20px;
+  font-size: .95rem;
+}
+
+.countries {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 50px 0 0 0;
+}
+
+.card-img img {
+  width: 100%;
+  height: 160px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  object-fit: cover;
+  object-position: bottom;
+}
+
+.card-body {
+  padding: 30px 25px;
+}
+
+.card-country {
+  width: 265px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.05);
+  margin-bottom: 75px;
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--dark-blue-light-mode);
+  margin-bottom: 25px;
+}
+
+.card-info {
+  font-size: .8rem;
+  color: var(--dark-gray);
+}
+
+.card-label {
+  font-weight: bold;
+  color: var(--dark-blue-light-mode);
+}
+
+.card-info-row {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
 }
