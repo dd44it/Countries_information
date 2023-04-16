@@ -18,7 +18,7 @@ export default function Layout() {
   function searchCountry(e) {
     const CHAR_CODE_ENTER = 13
     const { value } = e.target
-    if (e.charCode === CHAR_CODE_ENTER) {
+    if (e.keyCode === CHAR_CODE_ENTER) {
       const findCountry = countriesList.filter((country) =>
         country.name.toLowerCase().includes(value.toLowerCase())
       )

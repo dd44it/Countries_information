@@ -12,7 +12,7 @@ export default function Filter({country, handleText, searchCountry}) {
           name="country"
           value={country}
           onChange={handleText}
-          onKeyPress={searchCountry}
+          onKeyDown={searchCountry}
         />
       </div>
       <div className="select-wrapper">
