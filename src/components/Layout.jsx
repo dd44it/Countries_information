@@ -28,16 +28,23 @@ export default function Layout() {
     }
   }
 
+  function selectRegion(e) {
+    const { value } = e.target
+    const findRegion = countriesList.filter((region) => region.region.includes(value))
+    setSearchedCountries(findRegion)
+  }
+
   return (
     <div className="site-wrapper">
       <Header />
       <main className="main">
         <div className="container">
-          <Filter 
-            country={country}  
+          <Filter
+            country={country}
             handleText={handleText}
             searchCountry={searchCountry}
-           />
+            selectRegion={selectRegion}
+          />
           <Cards listCountries={searchedCountries.length ? searchedCountries : countriesList} />
           <Outlet />
         </div>
