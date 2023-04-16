@@ -159,8 +159,26 @@ body {
 }
 
 .country-detail {
+  display: grid;
+  grid-template-areas: 
+    "back back"
+    "col-1 col-2"; 
+  gap: 50px 120px; 
+  grid-template-columns: 560px 1fr;
+}
+
+.back-link {
+  grid-area: back;
+  text-decoration: none;
+  width: 135px;
+  height: 40px;
+  background-color: var(--white);
   display: flex;
-  gap: 120px;
+  gap: 20px;
+  align-items: center;
+  color: var(--dark-blue-light-mode);
+  border-radius: 5px;
+  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.05);
 }
 
 .country-info {
@@ -173,8 +191,12 @@ body {
   margin-bottom: 10px;
 }
 
-.country-detail .column {
-  width: 50%;
+.column-flag {
+  grid-area: col-1;
+}
+
+.column-info {
+  grid-area: col-2;
 }
 
 .column-info {

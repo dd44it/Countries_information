@@ -1,6 +1,7 @@
 import React from "react"
 import { useParams } from "react-router-dom"
 import data from "../data.json"
+import { Link } from "react-router-dom"
 
 export default function CardDetail() {
   const { countryName } = useParams()
@@ -11,6 +12,10 @@ export default function CardDetail() {
 
   return (
     <section className="country-detail">
+      <Link to="/" className="back-link"> 
+        <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+        Back 
+      </Link>
       <div className="column column-flag">
         <img src={findCountry.flag} alt={findCountry.name} />
       </div>
