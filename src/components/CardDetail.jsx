@@ -2,18 +2,17 @@ import React from "react"
 import { useParams } from "react-router-dom"
 import data from "../data.json"
 import { Link } from "react-router-dom"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLongArrowLeft } from '@fortawesome/free-solid-svg-icons'
 
 export default function CardDetail() {
   const { countryName } = useParams()
-  console.log(countryName)
-
   const findCountry = data.find(country => country.name === countryName)
-  console.log(findCountry)
 
   return (
     <section className="country-detail">
       <Link to="/" className="back-link"> 
-        <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+        <FontAwesomeIcon icon={faLongArrowLeft} />
         Back 
       </Link>
       <div className="column column-flag">
