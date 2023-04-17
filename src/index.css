@@ -294,6 +294,8 @@ input:-webkit-autofill:active{
 
 .country-info {
   display: flex;
+  gap: 100px;
+  margin-bottom: 125px;
 }
 
 .column-row {
@@ -317,9 +319,41 @@ input:-webkit-autofill:active{
   margin-bottom: 40px;
 }
 
+.country-label {
+  font-weight: 600;
+}
+
 .country-label::after {
   content: ":";
-  
+}
+
+.country-border {
+  display: flex;
+  align-items: center;
+}
+
+.country-border .country-label {
+  min-width: 150px;
+}
+
+.badge-wrapper {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.border-badge {
+  background-color: var(--white);
+  color: var(--dark-blue-light-mode);
+  border-radius: 5px;
+  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.05);
+  padding: 5px 25px;
+  text-align: center;
+}
+
+.main-night .border-badge {
+  background-color: var(--dark-blue-dark-mode);
+  color: var(--white);
 }
 
 @media(max-width: 1165px){
