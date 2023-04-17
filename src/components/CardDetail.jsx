@@ -2,18 +2,39 @@ import React from "react"
 import { useParams } from "react-router-dom"
 import data from "../data.json"
 import { Link } from "react-router-dom"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLongArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faLongArrowLeft } from "@fortawesome/free-solid-svg-icons"
 
 export default function CardDetail() {
   const { countryName } = useParams()
-  const findCountry = data.find(country => country.name === countryName)
+  // console.log(data)
+  const findCountry = data.find((country) => country.name === countryName)
+
+  const listLang =
+    findCountry.languages && findCountry.languages.map((lang) => lang.name).join(", ")
+  const listCurrencies =
+    findCountry.currencies && findCountry.currencies.map((curr) => curr.name).join(", ")
+  const population = new Intl.NumberFormat("en-En").format(findCountry.population)
+
+  const listFullNameBorder =
+    findCountry.borders &&
+    data
+      .filter((country) => findCountry.borders.includes(country.cioc))
+      .map((country) => country.name)
+
+  const listBorder =
+    findCountry.borders &&
+    listFullNameBorder.map((border, index) => (
+      <span className="border-badge" key={index}>
+        {border}
+      </span>
+    ))
 
   return (
     <section className="country-detail">
-      <Link to="/" className="back-link"> 
+      <Link to="/" className="back-link">
         <FontAwesomeIcon icon={faLongArrowLeft} />
-        Back 
+        Back
       </Link>
       <div className="column column-flag">
         <img src={findCountry.flag} alt={findCountry.name} />
@@ -28,7 +49,7 @@ export default function CardDetail() {
             </div>
             <div className="column-row">
               <div className="country-label">Population</div>
-              <div className="country-response">{findCountry.population}</div>
+              <div className="country-response">{population}</div>
             </div>
             <div className="column-row">
               <div className="country-label">Region</div>
@@ -50,14 +71,20 @@ export default function CardDetail() {
             </div>
             <div className="column-row">
               <div className="country-label">Currencies</div>
-              <div className="country-response"></div>
+              <div className="country-response"> {listCurrencies} </div>
             </div>
             <div className="column-row">
               <div className="country-label">Languages</div>
-              <div className="country-response"></div>
+              <div className="country-response"> {listLang} </div>
             </div>
           </div>
         </div>
+        {findCountry.borders && (
+          <div className="country-border">
+            <span className="country-label"> Border Countries </span>
+            <div className="badge-wrapper">{listBorder}</div>
+          </div>
+        )}
       </div>
     </section>
   )
