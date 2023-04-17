@@ -26,7 +26,8 @@ a {
   text-decoration: none;
 }
 
-a:hover {
+a:hover,
+.theme:hover {
   box-shadow: 0px 0px 6px 5px rgba(0, 0, 0, 0.09);
 }
 
@@ -52,7 +53,23 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
 
+.title {
+  font-size: 1.35rem;
+}
+
+.theme {
+  padding: 10px 20px;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  background-color: transparent;
+  font-size: 1rem;
+  color: var(--dark-blue-light-mode);
+  border-radius: 5px;
 }
 
 .main {
