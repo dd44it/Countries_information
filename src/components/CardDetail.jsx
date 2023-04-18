@@ -1,39 +1,11 @@
 import React from "react"
-import { useParams } from "react-router-dom"
-import data from "../data.json"
 import { Link } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faLongArrowLeft } from "@fortawesome/free-solid-svg-icons"
+import useHookDetailPage from "../hooks/useHookDetailPage"
 
 export default function CardDetail() {
-  const { countryName } = useParams()
-  // console.log(data)
-  const findCountry = data.find((country) => country.name === countryName)
-
-  const listLang =
-    findCountry.languages && findCountry.languages.map((lang) => lang.name).join(", ")
-  const listCurrencies =
-    findCountry.currencies && findCountry.currencies.map((curr) => curr.name).join(", ")
-  const population = new Intl.NumberFormat("en-En").format(findCountry.population)
-
-  const listFullNameBorder =
-    findCountry.borders &&
-    data
-      .filter((country) => findCountry.borders.includes(country.cioc))
-      .map((country) => country.name)
-
-  const listBorder =
-    findCountry.borders &&
-    listFullNameBorder.map((border, index) => (
-      <>
-      <Link to={`/${border}`} className="link">
-        <span className="border-badge" key={index}>
-          {border}
-        </span>
-      </Link>
-      </>
-    ))
-
+  const { findCountry, listLang, listCurrencies, population, listBorder } = useHookDetailPage()
   return (
     <section className="country-detail">
       <Link to="/" className="back-link">
