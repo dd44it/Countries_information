@@ -5,7 +5,6 @@ import data from "../data.json"
 
 export default function Home() {
   const [country, setCountry] = useState("")
-  const [countriesList, setCountiesList] = useState(data)
   const [searchedCountries, setSearchedCountries] = useState([])
 
   function handleText(e) {
@@ -17,7 +16,7 @@ export default function Home() {
     const CHAR_CODE_ENTER = 13
     const { value } = e.target
     if (e.keyCode === CHAR_CODE_ENTER) {
-      const findCountry = countriesList.filter((country) =>
+      const findCountry = data.filter((country) =>
         country.name.toLowerCase().includes(value.toLowerCase())
       )
       if (findCountry.length) {
@@ -28,7 +27,7 @@ export default function Home() {
 
   function selectRegion(e) {
     const { value } = e.target
-    const findRegion = countriesList.filter((region) => region.region.includes(value))
+    const findRegion = data.filter((region) => region.region.includes(value))
     setSearchedCountries(findRegion)
   }
 
@@ -40,7 +39,7 @@ export default function Home() {
         searchCountry={searchCountry}
         selectRegion={selectRegion}
       />
-      <Cards listCountries={searchedCountries.length ? searchedCountries : countriesList} />
+      <Cards listCountries={searchedCountries.length ? searchedCountries : data} />
     </>
   )
 }
