@@ -25,9 +25,13 @@ export default function CardDetail() {
   const listBorder =
     findCountry.borders &&
     listFullNameBorder.map((border, index) => (
-      <span className="border-badge" key={index}>
-        {border}
-      </span>
+      <>
+      <Link to={`/${border}`} className="link">
+        <span className="border-badge" key={index}>
+          {border}
+        </span>
+      </Link>
+      </>
     ))
 
   return (
